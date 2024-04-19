@@ -1,0 +1,31 @@
+.featured {
+  align-items: center;
+  justify-content: center;
+
+  .bottom {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // gap: 5px;
+
+    .featuredChart {
+      width: 100px;
+      height: 100px;
+    }
+
+    .title {
+      margin-top: 5px;
+      font-weight: 400;
+      color: gray;
+    }
+
+    .amount {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 20px;
+    }
+
+  }
+}

@@ -1,0 +1,53 @@
+.notification-item {
+  padding-top: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.302);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: SlideLeft 0.4s;
+  animation-fill-mode: forwards;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.315);
+
+  p{
+    margin: 0;
+    padding: 10px;
+  }
+
+  .bar{
+    height: 10px;
+  }
+
+  &.success .bar{
+    background-color: rgb(11, 175, 11);
+  }
+
+  &.error .bar{
+    background-color: red;
+  }
+
+  &.exit{
+    animation: SlideRight 0.4s;
+    animation-fill-mode: forwards;
+  } 
+}
+
+@keyframes SlideLeft {
+  0% {
+    margin-left: 120%;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes SlideRight {
+  0% {
+    margin-left: 0;
+  }
+
+  100% {
+    margin-left: 120%;
+  }
+}

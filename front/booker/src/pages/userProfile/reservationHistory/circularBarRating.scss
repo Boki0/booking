@@ -1,0 +1,35 @@
+.circularBarRatingWrapper {
+    align-items: center;
+    justify-content: center;
+  
+    .bottomCircularBarRating {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // gap: 5px;
+  
+      .circularBarRatingItem {
+        width: 250px;
+        height: 250px;
+      }
+  
+      .titleCircularBarRating {
+        margin-top: 30px;
+        font-weight: 800;
+        font-size: large;
+        color: gray;
+      }
+  
+      .ratingInput {
+        margin-top: 30px;
+        margin-bottom: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+        height: 30px;
+        width: 100px;
+      }
+  
+    }
+  }

@@ -1,0 +1,21 @@
+.miniSlider {
+  display: flex;
+  align-items: center;
+  width: 230px;
+  height: 180px;
+
+  .miniSliderImg{
+    width: 200px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .miniArrow{
+    // margin-left: 250px;
+    z-index: 999;
+    font-size: 20px;
+    color: lightgray;
+    cursor: pointer;
+  }
+}

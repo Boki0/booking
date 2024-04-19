@@ -1,0 +1,35 @@
+.circularBarWrapper {
+    align-items: center;
+    justify-content: center;
+  
+    .bottomCircularBar {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // gap: 5px;
+  
+      .circularBarItem {
+        width: 250px;
+        height: 250px;
+      }
+  
+      .titleCircularBar {
+        margin-top: 30px;
+        font-weight: 800;
+        font-size: large;
+        color: gray;
+      }
+  
+      .changeProfitInput {
+        margin-top: 30px;
+        margin-bottom: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+        height: 30px;
+        width: 100px;
+      }
+  
+    }
+  }

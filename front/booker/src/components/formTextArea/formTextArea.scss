@@ -1,0 +1,39 @@
+.formTextArea{
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+  margin-top: 10px;
+
+  textarea {
+    resize: none;
+    font-size: 14px;
+  }
+
+  .formInputInput {
+    padding: 15px;
+    margin: 5px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  
+  .formLabel {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .errorSpan{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+  }
+  
+  textarea:invalid[focused="true"]{
+    border: 1px solid red;
+  }
+  
+  textarea:invalid[focused="true"] ~ span {
+    display: block;
+  }
+}
+

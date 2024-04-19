@@ -1,0 +1,134 @@
+.newCottage {
+  width: 100%;
+  display: flex;
+
+  .newContainer {
+    flex: 6;
+
+    .top,
+    .bottom {
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      padding: 10px;
+      margin: 20px;
+      display: flex;
+      background-color: #4d4d4d0a;
+      border-radius: 10px;
+
+
+      h1 {
+        color: darkgrey;
+        font-size: 20px;
+      }
+
+      .left {
+        flex: 1;
+        text-align: center;
+
+        .images {
+          display: flex;
+          flex-wrap: wrap;
+          // align-items: center;
+          justify-content: space-between;
+
+          .deleteImgsBtn{
+            width: 150px;
+            height: 50px;
+            padding: 10px;
+            // margin: 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+            background-color: rgba(255, 0, 0, 0.829);
+          }
+
+          .oneImg {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin: 10px;
+          }
+
+        }
+        
+        // .imgWrapper {
+        //   opacity: 0.8;
+        //   width: 40%;
+        // }
+        
+        // .img {
+        //   width: 100%;
+        //   object-fit: cover;
+        //   cursor: pointer;
+        // }
+
+        
+      }
+
+      .right {
+        flex: 2;
+        padding: 0px 20px;
+
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: space-between;
+
+          .selectRooms{
+            width: 100%;
+
+            select{
+              width: 100%;
+              padding: 10px;
+            }
+          }
+
+          .formInput {
+            margin-top: 10px;
+            width: 40%;
+
+            label {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              .icon {
+                cursor: pointer;
+              }
+            }
+
+            // input {
+              // width: 100%;
+              // padding: 5px;
+              // border: none;
+              // border-bottom: 1px solid gray;
+            // }
+          }
+
+          button {
+            width: 150px;
+            height: 50px;
+            padding: 10px;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0071c2;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+          }
+
+          .sendBtn{
+            background-color: green;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.dialog{
+  margin: 0;
+  padding: 0;
+
+  min-width: 200px;
+  min-height: 200px;
+  padding: 30px;
+  box-sizing: border-box;
+  // border-radius: 10px;
+  box-shadow: 3px 6px 40px #000;
+  // margin-bottom: 10px;
+
+  .dialogTitle {
+    font-size: 20px;
+    // text-align: center;
+    margin-top: 15px;
+  }
+
+  .dialogContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 20px;
+
+    .formWrapper{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .addBtn {
+        width: 480px;
+        height: 50px;
+        padding: 10px;
+        margin: 10px 15px;
+        margin-bottom: 75px;
+        border: none;
+        border-radius: 5px;
+        background-color: green;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+
+        &.disabled{
+          background-color: gray;
+          cursor: not-allowed;
+        }
+      }
+
+      .inputsWrapper{
+        display: flex;
+        flex-direction: row;
+
+        .inputs{
+          margin: 10px;
+          display: flex;
+          flex-direction: column;
+
+          // &.selectBox{
+          //   margin-bottom: 80px;
+          // }
+
+          .input{
+            width: 210px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid gray;
+          }
+    
+          .dialogInput {
+            outline: none;
+            width: 260px;
+            padding: 15px;
+            // margin-right: 25px;
+            // font-size: 20px;
+            // color: #ccc;
+            // background-color: #000000;
+            border: 1px solid #4d4d4d49;
+            border-radius: 10px;
+          }
+    
+          .errorSpan{
+            font-size: 12px;
+            padding: 3px;
+            color: red;
+            display: none;
+          }
+    
+          input:invalid[focused="true"]{
+            border: 1px solid red;
+          }
+          
+          input:invalid[focused="true"] ~ span {
+            display: block;
+          }
+        }
+      }
+    }
+
+    
+  }
+}
