@@ -5,6 +5,8 @@ import com.example.demo.model.*;
 
 import com.example.demo.service.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "api/")
 public class ReservationController {
+    private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 
     @Autowired
     ReservationService reservationService;
@@ -37,20 +40,31 @@ public class ReservationController {
 
 
 
-    @PreAuthorize("hasRole('CLIENT')")
+   // @PreAuthorize("hasRole('CLIENT')")
     @PostMapping("newReservationUser/{clientId}/{offerId}")
     public ResponseEntity<Boolean> newReservationByUser(@PathVariable Integer clientId,
                                                         @PathVariable Integer offerId,
                                                         @RequestBody NewReservationDTO newReservation) {
 
-
+        logger.warn("Client notfdsfsdfsf found for clientId: {}", clientId);
         Offer offer = offerService.findById(offerId);
+
         if (offer == null) {
+
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
 
-        Client client = clientService.findById(clientId);
-        if (client == null) {
+        Client client = null;
+        try {
+            client = clientService.findById(clientId);
+            // Log the result of the client retrieval
+            if (client == null) {
+                logger.warn("Client not found for clientId: {}", clientId);
+                return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+            }
+            logger.info("Client found for clientId: {}", client);
+        } catch (Exception e) {
+            logger.error("Error occurred while finding client with id: {}", clientId, e);
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
 
@@ -58,7 +72,7 @@ public class ReservationController {
             return new ResponseEntity<>(true, HttpStatus.OK);   // ok
         }
 
-        return new ResponseEntity<>(false, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @PreAuthorize("hasAnyRole('BOAT_OWNER', 'COTTAGE_OWNER', 'INSTRUCTOR')")
