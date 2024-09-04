@@ -1,11 +1,9 @@
 import { useState } from "react";
-import "./formInput.css"
+import "./formInput.css";
 
 const FormInput = (props) => {
-  
   const [focused, setFocused] = useState(false);
-  const {label, errorMessage, onChange, id, ...inputProps} = props;
-
+  const { label, errorMessage, onChange, id, ...inputProps } = props;
 
   const handleFocus = (e) => {
     setFocused(true);
@@ -14,17 +12,19 @@ const FormInput = (props) => {
 
   return (
     <div className="formInput">
-      <label className="formLabel">{label}</label>
-      <input className="formInputInput"
+      {label && <label className="formLabel" htmlFor={id}>{label}</label>}
+      <input
         {...inputProps}
+        id={id ? id : undefined} // Dodaj id samo ako je prisutan
+        className="formInputInput"
         onChange={onChange}
         onBlur={handleFocus}
-        onFocus={() => inputProps.name==="confirmPassword" && setFocused(true) && inputProps.enableErrors}
+        onFocus={() => inputProps.name === "confirmPassword" && setFocused(true) && inputProps.enableErrors}
         focused={focused.toString()}
       />
-      <span className="errorSpan">{errorMessage}</span>
+      {errorMessage && <span className="errorSpan">{errorMessage}</span>}
     </div>
-  )
-}
+  );
+};
 
-export default FormInput
+export default FormInput;

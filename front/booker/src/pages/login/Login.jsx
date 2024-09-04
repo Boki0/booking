@@ -48,6 +48,7 @@ const Login = () => {
       <div className="lContainer">
         <h1 className="loginTitle" onClick={()=>navigate('/')}>the booker</h1>
         <FormInput
+          id = "login-name-input"
           errorMessage="It should be a valid email address!"
           label="Email"
           required 
@@ -58,6 +59,7 @@ const Login = () => {
           // className="lInput"
         />
         <FormInput
+          id = "login-pass-input"
           label="Password"
           type="password"
           placeholder="Password"
@@ -65,7 +67,8 @@ const Login = () => {
           onChange={handleChange}
           // className="lInput"
         />
-        <button disabled={loading} onClick={handleClick} className="lButton">
+
+        <button id="send-login-req" disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
         {error && <span className="wrong">The email or password is incorrect</span>}
