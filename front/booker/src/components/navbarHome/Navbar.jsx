@@ -48,7 +48,7 @@ const NavbarHome = () => {
             {usersWithDashboard.indexOf(user.type) > -1 && <button onClick={onDashboardClick} className="navButton">Dashboard</button>}
 
           {/* {user.email} */}
-          <button className="navButton"onClick={handleClick}>Logout</button>
+          <button id="logout-button" className="navButton"onClick={handleClick}>Logout</button>
           </div>
         ) 
         : (
