@@ -60,6 +60,7 @@ class BookingTests(unittest.TestCase):
 
         self.assertEqual(error_message_text, expected_error_text, "The email or password is incorrect")
 
+
     def test_registration_success(self):
         driver = self.driver
         login_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "reg-button")))
@@ -105,6 +106,75 @@ class BookingTests(unittest.TestCase):
         message_text = message_element.text
         expected_text = 'Please check your email and confirm registration!'
         self.assertEqual(message_text, expected_text, "Failed to redirect to the home page.")
+
+    def test_registration_invalid_email(self):
+        driver = self.driver
+        login_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "reg-button")))
+        login_btn.click()
+
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "form")))
+
+        email_input = driver.find_element(By.ID, "1")
+        email_input.send_keys("invalid-email")
+
+        submit_button = driver.find_element(By.CSS_SELECTOR, "button.submit")
+        submit_button.click()
+
+        error_message_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.errorSpan')))
+
+
+        error_message_text = error_message_element.text
+        expected_error_text = 'It should be a valid email address!'
+        self.assertEqual(error_message_text, expected_error_text,"Error message for invalid email not displayed correctly.")
+
+    def test_registration_short_password(self):
+        driver = self.driver
+        login_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "reg-button")))
+        login_btn.click()
+
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "form")))
+
+        password_input = driver.find_element(By.ID, "4")
+        password_input.send_keys("test")
+
+        submit_button = driver.find_element(By.CSS_SELECTOR, "button.submit")
+        submit_button.click()
+
+        error_message_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.errorSpan')))
+
+        error_message_elements = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.errorSpan')))
+
+        expected_error_text = 'Password should be at least 8 characters!'
+
+        error_found = any(expected_error_text in element.text for element in error_message_elements)
+
+        self.assertTrue(error_found, "Error message for short password not displayed correctly.")
+
+
+
+    def test_registration_mismatched_passwords(self):
+        driver = self.driver
+        login_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "reg-button")))
+        login_btn.click()
+
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "form")))
+
+        password_input = driver.find_element(By.ID, "4")
+        password_input.send_keys("password123")  # Lozinka
+
+        confirm_password_input = driver.find_element(By.ID, "5")
+        confirm_password_input.send_keys("differentpassword")
+
+        submit_button = driver.find_element(By.CSS_SELECTOR, "button.submit")
+        submit_button.click()
+
+        error_message_elements = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.errorSpan')))
+
+        expected_error_text = 'Passwords don\'t match!'
+
+        error_found = any(expected_error_text in element.text for element in error_message_elements)
+
+        self.assertTrue(error_found, "mismatched passwords ")
 
     def test_no_properties_available_for_dates(self):
         driver = self.driver
